@@ -13,6 +13,6 @@ This project is a Go application that retrieves secrets from a 1Password vault v
 
 To build the binary for this application, clone this repo and run the following command:
 
-macOS: `GOOS=darwin go build -o 1pwsecret main.go`
-Linux: `GOOS=linux go build -o 1pwsecret main.go`
-Windows: `GOOS=windows go build -o 1pwsecret main.go`
+macOS: `GOOS=darwin go build -o 1pwsecret main.go`  
+Linux: `GOOS=linux go build -o 1pwsecret main.go`  
+Windows: `GOOS=windows go build -o 1pwsecret main.go`  
