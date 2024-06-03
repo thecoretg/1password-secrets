@@ -2,11 +2,17 @@ package secrets
 
 import (
 	"context"
+	"errors"
+	"os"
 
 	"github.com/1password/onepassword-sdk-go"
 )
 
 func GetClient() (*onepassword.Client, error) {
+	token := os.Getenv("OP_SERVICE_ACCOUNT_TOKEN")
+	if token == "" {
+		return nil, errors.New("OP_SERVICE_ACCOUNT_TOKEN is not set")
+	}
 
 	client, err := onepassword.NewClient(
 		context.TODO(),
