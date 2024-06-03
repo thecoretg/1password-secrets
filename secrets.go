@@ -7,7 +7,7 @@ import (
 	"github.com/1password/onepassword-sdk-go"
 )
 
-func GetSecret(secretReference string) string {
+func GetClient() (*onepassword.Client, error) {
 	token := os.Getenv("OP_SERVICE_ACCOUNT_TOKEN")
 	client, err := onepassword.NewClient(
 		context.TODO(),
@@ -15,12 +15,17 @@ func GetSecret(secretReference string) string {
 		onepassword.WithIntegrationInfo("TCTG API Secrets", "v1.0.0"),
 	)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
+	return client, nil
+}
+
+func GetSecret(client *onepassword.Client, secretReference string) (string, error) {
+
 	secret, err := client.Secrets.Resolve(context.TODO(), secretReference)
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
-	return secret
+	return secret, nil
 }
