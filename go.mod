@@ -1,4 +1,4 @@
-module github.com/tctgdanny/go-1pw
+module github.com/thecoretg/1password-secrets
 
 go 1.22.2
 
