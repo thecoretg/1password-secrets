@@ -5,9 +5,12 @@ import (
 	"os"
 
 	"github.com/1password/onepassword-sdk-go"
+	"github.com/joho/godotenv"
 )
 
 func GetClient() (*onepassword.Client, error) {
+	godotenv.Load()
+
 	token := os.Getenv("OP_SERVICE_ACCOUNT_TOKEN")
 	client, err := onepassword.NewClient(
 		context.TODO(),
